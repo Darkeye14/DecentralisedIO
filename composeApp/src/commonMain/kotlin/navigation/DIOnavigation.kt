@@ -7,7 +7,6 @@ import androidx.navigation.compose.rememberNavController
 import screens.HomeScreen
 import screens.SignUp
 
-
 @Composable
 fun DIONavigation() {
     val navController = rememberNavController()

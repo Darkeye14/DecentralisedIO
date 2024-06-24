@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -29,6 +28,9 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import me.sample.library.resources.Res
+import me.sample.library.resources.app_name
+import org.jetbrains.compose.resources.stringResource
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -38,7 +40,7 @@ fun SignUp() {
             CenterAlignedTopAppBar(
                 title = {
                     Text(
-                        text = "Decentralised CV",
+                        text = stringResource(Res.string.app_name),
                         fontStyle = FontStyle.Italic,
                         fontSize = 38.sp,
                         fontWeight = FontWeight.SemiBold
@@ -69,7 +71,7 @@ fun SignUp() {
             val passwordState = remember {
                 mutableStateOf(TextFieldValue())
             }
-            androidx.compose.material3.Text(
+            Text(
                 text = "Sign Up",
                 fontSize = 30.sp,
                 fontFamily = FontFamily.SansSerif,
@@ -86,14 +88,14 @@ fun SignUp() {
                     imeAction = ImeAction.Done
                 ),
                 label = {
-                    androidx.compose.material3.Text(
+                    Text(
                         text = "Email",
                         modifier = Modifier
                             .padding(8.dp)
                     )
                 },
                 placeholder = {
-                    androidx.compose.material3.Text(text = "Ex: abcd@gmail.com")
+                    Text(text = "Ex: abcd@gmail.com")
                 }
             )
             OutlinedTextField(
