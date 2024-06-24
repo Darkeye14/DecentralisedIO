@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -21,6 +22,7 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -32,14 +34,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.fastForEach
 import androidx.navigation.NavController
 import data.HomeCardData
+import me.sample.library.resources.Logos
 import me.sample.library.resources.Res
 import me.sample.library.resources.app_name
 import me.sample.library.resources.img
-import me.sample.library.resources.logo
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import util.HomeScreenCard
@@ -54,21 +59,34 @@ fun HomeScreen(
 
     Scaffold(
         topBar = {
-            CenterAlignedTopAppBar(
+            TopAppBar(
                 title = {
-                    Image(painterResource(Res.drawable.logo),
-                        null,
-                        contentScale = ContentScale.Inside,
-                        modifier = Modifier.padding(2.dp)
-                            .size(60.dp)
-                    )
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        Text(text = stringResource(Res.string.app_name),
+                            fontFamily = FontFamily.Cursive,
+                            fontSize = 28.sp,
+                            color = Color.White
+                        )
+                    }
                 },
-                colors = TopAppBarDefaults.mediumTopAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primary,
-                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
-                )
+                navigationIcon = {
+                    Image(painterResource(Res.drawable.Logos),
+                    null,
+                    contentScale = ContentScale.FillBounds,
+                    modifier = Modifier.padding(2.dp)
+                        .size(60.dp)
+                )},
+                backgroundColor = MaterialTheme.colorScheme.primary
+//                colors = TopAppBarDefaults.mediumTopAppBarColors(
+//                    containerColor = MaterialTheme.colorScheme.primary,
+//                    titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
+//                )
             )
         },
+
         content = {
             val dataList = listOf(
                 HomeCardData(
