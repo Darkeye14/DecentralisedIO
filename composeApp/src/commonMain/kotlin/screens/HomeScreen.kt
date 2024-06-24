@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -38,6 +39,7 @@ import data.HomeCardData
 import me.sample.library.resources.Res
 import me.sample.library.resources.app_name
 import me.sample.library.resources.img
+import me.sample.library.resources.logo
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import util.HomeScreenCard
@@ -54,7 +56,12 @@ fun HomeScreen(
         topBar = {
             CenterAlignedTopAppBar(
                 title = {
-                    Text(text = stringResource(Res.string.app_name))
+                    Image(painterResource(Res.drawable.logo),
+                        null,
+                        contentScale = ContentScale.Inside,
+                        modifier = Modifier.padding(2.dp)
+                            .size(60.dp)
+                    )
                 },
                 colors = TopAppBarDefaults.mediumTopAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primary,
